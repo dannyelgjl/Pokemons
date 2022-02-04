@@ -10,7 +10,7 @@ export const Container = styled.TouchableOpacity.attrs({
   margin: ${mvs(6)}px;
   width: ${mvs(140)}px;
   height: ${mvs(140)}px;
-  background-color: ${({theme}) => theme.colors.cardBackground};
+  background-color: ${({theme}) => theme.colors.darkOpacity};
 `;
 
 export const Pokemon = styled.Image`

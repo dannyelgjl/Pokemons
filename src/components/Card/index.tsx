@@ -7,11 +7,12 @@ interface IPokemons {
   name: string;
   nameImageGif: string;
   nameImagePng: string;
+  onPress?: () => void;
 }
 
-const Card = ({ name, nameImageGif, nameImagePng }: IPokemons) => {
+const Card = ({ name, nameImageGif, nameImagePng, onPress }: IPokemons) => {
   return (
-    <Container>
+    <Container onPress={onPress}>
       <Pokemon
         source={{
           uri:

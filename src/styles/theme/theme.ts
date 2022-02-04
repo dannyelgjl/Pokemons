@@ -3,9 +3,9 @@ export default {
     cardBackground: '#FF4654',
     background: '#101B25',
     white: '#FFFFFF',
-    transparent: 'transparent',
-    blue: '#0389FF',
+    grey: '#EEEEEE',
     darkBlue: '#233140',
-    darkOpacity: 'rgba(200,200,200,0.3)',
+    darkOpacity: 'rgba(200,200,200,0.1)',
+    text: '#f7ba15',
   },
 };

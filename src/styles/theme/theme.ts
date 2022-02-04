@@ -1,11 +1,31 @@
 export default {
   colors: {
-    cardBackground: '#FF4654',
     background: '#101B25',
     white: '#FFFFFF',
     grey: '#EEEEEE',
     darkBlue: '#233140',
     darkOpacity: 'rgba(200,200,200,0.1)',
     text: '#f7ba15',
+  },
+
+  typePokeColors: {
+    grass: '#4CD964',
+    ground: '#e2c569',
+    fire: '#f08030',
+    water: '#6890f0',
+    fighting: '#c03028',
+    ice: '#98d8d8',
+    poison: '#a040a0',
+    dark: '#705848',
+    fairy: '#f7b5f7',
+    psychic: '#df5f83',
+    normal: '#a8a878',
+    ghost: '#705898',
+    rock: '#b8a038',
+    dragon: '#7860e2',
+    flying: '#8d9fee',
+    steel: '#b1b1c0',
+    electric: '#fce134',
+    bug: '#a4b31c',
   },
 };

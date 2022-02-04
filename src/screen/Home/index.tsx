@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
+import { Header } from '../../components';
 import api from '../../services/api';
-import { Container, Title } from './styles';
+import { Container } from './styles';
 
 const Home: React.FC = () => {
   useEffect(() => {
@@ -11,7 +12,7 @@ const Home: React.FC = () => {
 
   return (
     <Container>
-      <Title>Estruturando projeto poke</Title>
+      <Header title="Pokémon World" />
     </Container>
   );
 };

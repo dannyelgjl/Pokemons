@@ -23,6 +23,7 @@ export const PokeName = styled.Text`
   font-size: ${mvs(18)}px;
   color: ${({theme}) => theme.colors.white};
   font-weight: bold;
+  text-transform: capitalize;
 
   margin-top: ${mvs(8)}px;
 `;

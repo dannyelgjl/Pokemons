@@ -38,6 +38,7 @@ const Detail: React.FC = () => {
         ) : (
           <Content>
             <PokeDetail
+              types={pokemon.types}
               pokeImage={pokemon?.sprites?.other?.home?.front_default}
               pokeName={params.item.name}
               weight="Weight"

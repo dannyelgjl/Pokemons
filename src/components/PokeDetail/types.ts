@@ -5,11 +5,11 @@ export interface IPokeDetail {
   pokeCalcWeight?: string;
   height?: string;
   pokeCalcHeight?: string;
-  types: [
-    {
-      type: {
-        name: string;
-      };
-    },
-  ];
+  types?: IPoke[];
+}
+
+export interface IPoke {
+  type: {
+    name: string;
+  };
 }

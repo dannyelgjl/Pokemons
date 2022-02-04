@@ -1,8 +1,6 @@
 import React from 'react';
-import { View } from 'react-native';
 
 import {
-  Container,
   PokeImage,
   PokeName,
   PokeStatusCard,
@@ -10,6 +8,7 @@ import {
   ContentStatus,
   PokeTitle,
   PokeStatus,
+  ContentStatusCenter,
 } from './styles';
 
 import { IPokeDetail, IPoke } from './types';
@@ -43,20 +42,16 @@ const PokeDetail = ({
             <PokeTitle>{height}</PokeTitle>
             <PokeStatus>{pokeCalcHeight} M</PokeStatus>
           </ContentStatus>
+        </ContainerStatus>
 
-          <ContentStatus>
-            <PokeTitle>Type</PokeTitle>
+        <ContentStatusCenter>
+          <PokeTitle>Type Poke</PokeTitle>
 
-            {types.map(poke => (
+          {types &&
+            types.map((poke: IPoke) => (
               <PokeStatus>{poke.type.name}</PokeStatus>
             ))}
-          </ContentStatus>
-
-          {/* <ContentStatus>
-            <PokeTitle>Height</PokeTitle>
-            <PokeStatus>{pokemon?.types[1]?.type?.name}</PokeStatus>
-          </ContentStatus> */}
-        </ContainerStatus>
+        </ContentStatusCenter>
       </PokeStatusCard>
     </>
   );

@@ -15,6 +15,8 @@ export const PokeName = styled.Text`
   color: ${({theme}) => theme.colors.white};
   margin-top: ${mvs(16)}px;
   margin-bottom: ${mvs(22)}px;
+
+  text-transform: capitalize;
 `;
 
 export const PokeStatusCard = styled.View`
@@ -35,6 +37,12 @@ export const ContentStatus = styled.View`
   justify-content: center;
 `;
 
+export const ContentStatusCenter = styled.View`
+  align-items: center;
+  justify-content: center;
+  margin-top: ${mvs(18)}px;
+`;
+
 export const PokeTitle = styled.Text`
   color: ${({theme}) => theme.colors.white};
   font-size: ${mvs(14)}px;
@@ -45,4 +53,6 @@ export const PokeStatus = styled.Text`
   margin-top: ${mvs(4)}px;
   font-weight: bold;
   font-size: ${mvs(18)}px;
+
+  text-transform: capitalize;
 `;

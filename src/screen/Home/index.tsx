@@ -72,7 +72,7 @@ const Home: React.FC = () => {
         />
         <SearchButton onPress={() => handleSearch(search)}>
           <SearchPokeBall />
-          <SearchButtonText>Buscar</SearchButtonText>
+          <SearchButtonText>Search</SearchButtonText>
         </SearchButton>
       </PokeSearchContainer>
 

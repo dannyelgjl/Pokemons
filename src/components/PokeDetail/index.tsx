@@ -91,9 +91,7 @@ const PokeDetail = ({
 
           {types &&
             types.map((poke: IPoke) => (
-              <>
-                <PokeStatus>{renderPokemonType(poke.type.name)}</PokeStatus>
-              </>
+              <PokeStatus>{renderPokemonType(poke.type.name)}</PokeStatus>
             ))}
         </ContentStatusCenter>
       </PokeStatusCard>

@@ -18,3 +18,9 @@ export const Content = styled.View`
 
   border-radius: 8px;
 `;
+
+export const ContainerLoading = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;

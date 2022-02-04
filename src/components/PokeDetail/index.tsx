@@ -12,14 +12,8 @@ import {
   PokeStatus,
 } from './styles';
 
-interface IPokeDetail {
-  pokeImage?: string;
-  pokeName?: string;
-  weight?: string;
-  pokeCalcWeight?: string;
-  height?: string;
-  pokeCalcHeight?: string;
-}
+import { IPokeDetail, IPoke } from './types';
+
 const PokeDetail = ({
   pokeImage,
   pokeName,
@@ -27,6 +21,7 @@ const PokeDetail = ({
   pokeCalcWeight,
   height,
   pokeCalcHeight,
+  types,
 }: IPokeDetail) => {
   return (
     <>
@@ -49,10 +44,18 @@ const PokeDetail = ({
             <PokeStatus>{pokeCalcHeight} M</PokeStatus>
           </ContentStatus>
 
+          <ContentStatus>
+            <PokeTitle>Type</PokeTitle>
+
+            {types.map(poke => (
+              <PokeStatus>{poke.type.name}</PokeStatus>
+            ))}
+          </ContentStatus>
+
           {/* <ContentStatus>
-<PokeTitle>Height</PokeTitle>
-<PokeStatus>{pokemon?.types[0]?.type?.name}</PokeStatus>
-</ContentStatus> */}
+            <PokeTitle>Height</PokeTitle>
+            <PokeStatus>{pokemon?.types[1]?.type?.name}</PokeStatus>
+          </ContentStatus> */}
         </ContainerStatus>
       </PokeStatusCard>
     </>

@@ -3,7 +3,7 @@ import api from '../../services/api';
 import { PokeHeader, PokeLoading, PokeDetail } from '../../components';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 
-import { Container, Content } from './styles';
+import { Container, Content, ContainerLoading } from './styles';
 
 import { IPokemon, ParamList } from './types';
 
@@ -31,10 +31,12 @@ const Detail: React.FC = () => {
           onPress={() => navigation.goBack()}
         />
 
-        <Content>
-          {!pokemon ? (
+        {!pokeDetail && !pokemon ? (
+          <ContainerLoading>
             <PokeLoading />
-          ) : (
+          </ContainerLoading>
+        ) : (
+          <Content>
             <PokeDetail
               pokeImage={pokemon?.sprites?.other?.home?.front_default}
               pokeName={params.item.name}
@@ -43,8 +45,8 @@ const Detail: React.FC = () => {
               height="Height"
               pokeCalcHeight={String(pokeCalcHeight)}
             />
-          )}
-        </Content>
+          </Content>
+        )}
       </Container>
     </>
   );

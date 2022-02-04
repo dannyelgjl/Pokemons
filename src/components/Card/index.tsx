@@ -2,13 +2,7 @@ import React from 'react';
 import { Platform } from 'react-native';
 
 import { Container, PokeName, Pokemon } from './styles';
-
-interface IPokemons {
-  name: string;
-  nameImageGif: string;
-  nameImagePng: string;
-  onPress?: () => void;
-}
+import { IPokemons } from './types';
 
 const Card = ({ name, nameImageGif, nameImagePng, onPress }: IPokemons) => {
   return (

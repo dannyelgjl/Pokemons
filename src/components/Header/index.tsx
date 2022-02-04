@@ -9,13 +9,9 @@ import {
   TextGoBack,
 } from './styles';
 
-interface IHeader {
-  title: string;
-  activeGoBackButton?: boolean;
-  onPress?: () => void;
-}
+import { IPokeHeader } from './types';
 
-const Header = ({ title, activeGoBackButton, onPress }: IHeader) => {
+const Header = ({ title, activeGoBackButton, onPress }: IPokeHeader) => {
   return (
     <Container>
       {activeGoBackButton ? (

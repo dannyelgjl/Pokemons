@@ -19,8 +19,8 @@ export const GoBackButton = styled.TouchableOpacity`
 export const PokeGoBack = styled.Image.attrs({
   source: openPoke,
 })`
-  width: 40px;
-  height: 40px;
+  width: ${mvs(40)}px;
+  height: ${mvs(40)}px;
 `;
 
 export const TextGoBack = styled.Text`

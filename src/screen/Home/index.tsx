@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { FlatList, StatusBar } from 'react-native';
+import { Alert, FlatList, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { PokeHeader, PokeCard, PokeLoading } from '../../components';
 import { useTheme } from 'styled-components';
@@ -21,26 +21,41 @@ const Home: React.FC = () => {
   const theme = useTheme();
 
   const [pokemons, setPokemons] = useState<IPokemons[]>([]);
-  const [searchPoke, setSearchPoke] = useState<string>('');
-
-  console.log('SEARCH', searchPoke);
-  console.log('POKE', pokemons);
+  const [search, setSearch] = useState<string>('');
+  const [pokeName, setPokeName] = useState<string>('');
+  const [showCard, setShowCard] = useState(false);
 
   useEffect(() => {
     api
-      .get('/pokemon?limit=2&offset=0')
+      .get('/pokemon?limit=1000&offset=0')
       .then(response => setPokemons(response.data.results));
   }, []);
 
-  const handleSearch = useCallback(() => {
-    if (searchPoke !== '') {
-      api
-        .get(`/pokemon/${searchPoke}`)
-        .then(response => setSearchPoke(response.data.name));
-    } else {
-      return;
+  useEffect(() => {
+    if (search === '') {
+      setShowCard(false);
     }
-  }, [searchPoke]);
+  }, [search]);
+
+  const handleSearch = useCallback(
+    (searchPoke: string) => {
+      if (search !== '') {
+        api
+          .get(`/pokemon/${searchPoke}`)
+          .then(response => {
+            setPokeName(response.data.name), setShowCard(true);
+          })
+          .catch(erro => {
+            if (erro.response.data === 'Not Found') {
+              Alert.alert('Pokémon name not found :(');
+
+              setSearch('');
+            }
+          });
+      }
+    },
+    [search],
+  );
 
   return (
     <Container>
@@ -48,25 +63,25 @@ const Home: React.FC = () => {
       <PokeHeader title="Pokémon World" />
       <PokeSearchContainer>
         <PokeSearch
-          placeholder="Busque seu Pokémon..."
-          value={searchPoke}
+          placeholder="Find your Pokemon..."
+          value={search}
           placeholderTextColor={theme.colors.grey}
-          onChangeText={setSearchPoke}
+          onChangeText={setSearch}
           autoCapitalize="none"
           autoCorrect={false}
         />
-        <SearchButton onPress={() => handleSearch()}>
+        <SearchButton onPress={() => handleSearch(search)}>
           <SearchPokeBall />
           <SearchButtonText>Buscar</SearchButtonText>
         </SearchButton>
       </PokeSearchContainer>
 
       <Content>
-        {searchPoke !== '' ? (
+        {showCard ? (
           <PokeCard
-            name={searchPoke}
-            nameImageGif={searchPoke}
-            nameImagePng={searchPoke}
+            name={pokeName}
+            nameImageGif={pokeName}
+            nameImagePng={pokeName}
           />
         ) : (
           <FlatList

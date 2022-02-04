@@ -1,11 +1,11 @@
 import React from 'react';
 import { Container, PokeBall, Title } from './styles';
 
-interface HeaderProps {
+interface IHeader {
   title: string;
 }
 
-const Header = ({ title }: HeaderProps) => {
+const Header = ({ title }: IHeader) => {
   return (
     <Container>
       <Title>{title}</Title>

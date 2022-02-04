@@ -1,18 +1,44 @@
-import React, { useEffect } from 'react';
-import { Header } from '../../components';
+import React, { useEffect, useState } from 'react';
+import { FlatList, Platform, StatusBar } from 'react-native';
+
+import { PokeHeader, PokeCard } from '../../components';
 import api from '../../services/api';
-import { Container } from './styles';
+import { Container, Content, Card, Pokemon, PokeName } from './styles';
+
+interface IPokemons {
+  name: string;
+}
 
 const Home: React.FC = () => {
+  const [pokemons, setPokemons] = useState<IPokemons[]>([]);
+
   useEffect(() => {
     api
-      .get('/pokemon?limit=10&offset=0')
-      .then(response => console.log('TESTE API:', response.data));
+      .get('/pokemon?limit=1000&offset=0')
+      .then(response => setPokemons(response.data.results));
   }, []);
 
   return (
     <Container>
-      <Header title="Pokémon World" />
+      <StatusBar barStyle="light-content" />
+      <PokeHeader title="Pokémon World" />
+
+      <Content>
+        <FlatList
+          data={pokemons}
+          horizontal={false}
+          showsVerticalScrollIndicator={false}
+          keyExtractor={item => item.name}
+          numColumns={2}
+          renderItem={({ item }) => (
+            <PokeCard
+              name={item.name}
+              nameImageGif={item.name}
+              nameImagePng={item.name}
+            />
+          )}
+        />
+      </Content>
     </Container>
   );
 };

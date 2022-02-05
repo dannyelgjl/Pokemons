@@ -9,7 +9,9 @@ import {
   ContentStatus,
   PokeTitle,
   PokeStatus,
+  PokeTypeStatus,
   ContentStatusCenter,
+  PokeTypeContainer,
 } from './styles';
 
 import { IPokeDetail, IPoke } from './types';
@@ -87,12 +89,15 @@ const PokeDetail = ({
         </ContainerStatus>
 
         <ContentStatusCenter>
-          <PokeTitle>Type Poke</PokeTitle>
-
-          {types &&
-            types.map((poke: IPoke) => (
-              <PokeStatus>{renderPokemonType(poke.type.name)}</PokeStatus>
-            ))}
+          <PokeTitle>Type</PokeTitle>
+          <PokeTypeContainer>
+            {types &&
+              types.map((poke: IPoke) => (
+                <PokeTypeStatus>
+                  {renderPokemonType(poke.type.name)}
+                </PokeTypeStatus>
+              ))}
+          </PokeTypeContainer>
         </ContentStatusCenter>
       </PokeStatusCard>
     </>

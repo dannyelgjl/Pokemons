@@ -47,7 +47,7 @@ const Home: React.FC = () => {
           })
           .catch(erro => {
             if (erro.response.data === 'Not Found') {
-              Alert.alert('Pokémon name not found :(');
+              Alert.alert(`Pokémon ${searchPoke} not found :(`);
 
               setSearch('');
             }

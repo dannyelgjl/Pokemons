@@ -48,10 +48,25 @@ export const PokeTitle = styled.Text`
   font-size: ${mvs(14)}px;
 `;
 
+export const PokeTypeContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+  width: 100%;
+`;
+
 export const PokeStatus = styled.Text`
   color: ${({theme}) => theme.colors.text};
   margin-top: ${mvs(4)}px;
   font-weight: bold;
+  font-size: ${mvs(18)}px;
+
+  text-transform: capitalize;
+`;
+
+export const PokeTypeStatus = styled.Text`
+  margin-top: ${mvs(8)}px;
   font-size: ${mvs(18)}px;
 
   text-transform: capitalize;

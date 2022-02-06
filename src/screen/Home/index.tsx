@@ -4,6 +4,10 @@ import { useNavigation } from '@react-navigation/native';
 import { PokeHeader, PokeCard, PokeLoading } from '../../components';
 import { useTheme } from 'styled-components';
 import api from '../../services/api';
+import { SCREENS } from '../../routes/constants/routes-name';
+import { IPokemons } from './types';
+import { STRINGS } from './strings';
+
 import {
   Container,
   Content,
@@ -13,8 +17,6 @@ import {
   SearchButton,
   SearchButtonText,
 } from './styles';
-import { SCREENS } from '../../routes/constants/routes-name';
-import { IPokemons } from './types';
 
 const Home: React.FC = () => {
   const navigation = useNavigation();
@@ -46,8 +48,10 @@ const Home: React.FC = () => {
             setPokeName(response.data.name), setShowCard(true);
           })
           .catch(erro => {
-            if (erro.response.data === 'Not Found') {
-              Alert.alert(`Pokémon ${searchPoke} not found :(`);
+            if (erro.response.data === `${STRINGS.NOT_FOUND}`) {
+              Alert.alert(
+                `${STRINGS.POKEMON} ${searchPoke} ${STRINGS.NOT_FOUND} :(`,
+              );
 
               setSearch('');
             }
@@ -57,13 +61,17 @@ const Home: React.FC = () => {
     [search],
   );
 
+  const handleAlert = () => {
+    Alert.alert(STRINGS.ALERT);
+  };
+
   return (
     <Container>
       <StatusBar barStyle="light-content" />
-      <PokeHeader title="Pokémon World" />
+      <PokeHeader title={STRINGS.POKE_TITLE} />
       <PokeSearchContainer>
         <PokeSearch
-          placeholder="Find your Pokemon..."
+          placeholder={STRINGS.POKE_PLACEHOLDER}
           value={search}
           placeholderTextColor={theme.colors.grey}
           onChangeText={setSearch}
@@ -81,7 +89,7 @@ const Home: React.FC = () => {
           <PokeCard
             name={pokeName}
             nameImagePng={pokeName}
-            onPress={() => navigation.navigate(SCREENS.DETAIL, { pokeName })}
+            onPress={handleAlert}
           />
         ) : (
           <FlatList

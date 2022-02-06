@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import api from '../../services/api';
-import { PokeHeader, PokeLoading, PokeDetail } from '../../components';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
+import { PokeHeader, PokeLoading, PokeDetail } from '../../components';
 
-import { Container, Content, ContainerLoading } from './styles';
+import api from '../../services/api';
 
 import { IPokemon, ParamList } from './types';
+import { STRINGS } from './strings';
+
+import { Container, Content, ContainerLoading } from './styles';
 
 const Detail: React.FC = () => {
   const navigation = useNavigation();
@@ -21,12 +23,13 @@ const Detail: React.FC = () => {
 
   useEffect(() => {
     api.get(`${pokeDetail.url}`).then(response => setPokemon(response.data));
-  }, []);
+  }, [pokeDetail.url]);
+
   return (
     <>
       <Container>
         <PokeHeader
-          title="Poke Detail"
+          title={STRINGS.POKE_TITLE}
           activeGoBackButton
           onPress={() => navigation.goBack()}
         />

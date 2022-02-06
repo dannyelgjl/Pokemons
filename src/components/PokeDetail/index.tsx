@@ -51,7 +51,7 @@ const PokeDetail = ({
           <PokeTypeContainer>
             {types &&
               types.map((poke: IPoke) => (
-                <PokeTypeStatus>
+                <PokeTypeStatus key={poke.type.name}>
                   {renderPokemonType(poke.type.name)}
                 </PokeTypeStatus>
               ))}

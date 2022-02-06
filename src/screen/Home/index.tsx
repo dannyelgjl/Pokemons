@@ -27,7 +27,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     api
-      .get('/pokemon?limit=1000&offset=0')
+      .get('/pokemon?limit=1200&offset=0')
       .then(response => setPokemons(response.data.results));
   }, []);
 
@@ -80,8 +80,8 @@ const Home: React.FC = () => {
         {showCard ? (
           <PokeCard
             name={pokeName}
-            nameImageGif={pokeName}
             nameImagePng={pokeName}
+            onPress={() => navigation.navigate(SCREENS.DETAIL, { pokeName })}
           />
         ) : (
           <FlatList
@@ -97,7 +97,6 @@ const Home: React.FC = () => {
                   navigation.navigate(SCREENS.DETAIL, { item: item })
                 }
                 name={item.name}
-                nameImageGif={item.name}
                 nameImagePng={item.name}
               />
             )}

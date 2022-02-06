@@ -31,7 +31,7 @@ const Detail: React.FC = () => {
           onPress={() => navigation.goBack()}
         />
 
-        {!pokeDetail && !pokemon ? (
+        {!pokeDetail.name && !pokemon ? (
           <ContainerLoading>
             <PokeLoading />
           </ContainerLoading>
@@ -40,7 +40,7 @@ const Detail: React.FC = () => {
             <PokeDetail
               types={pokemon.types}
               pokeImage={pokemon?.sprites?.other?.home?.front_default}
-              pokeName={params.item.name}
+              pokeName={pokeDetail.name}
               weight="Weight"
               pokeCalcWeight={String(pokeCalcWeight)}
               height="Height"
